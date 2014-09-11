@@ -52,7 +52,7 @@ grails.mime.types = [ // the first one is the default format
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
-
+//grails.date.formats="yyyyMMdd"
 // The default scope for controllers. May be prototype, session or singleton.
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
@@ -79,7 +79,7 @@ grails {
 grails.converters.encoding = "UTF-8"
 // scaffolding templates configuration
 grails.scaffolding.templates.domainSuffix = 'Instance'
-
+//grails.views.javascript.library="jquery"
 // Set to false to use the new Grails 1.2 JSONBuilder in the render method
 grails.json.legacy.builder = false
 // enabled native2ascii conversion of i18n properties files
