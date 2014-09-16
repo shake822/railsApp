@@ -7,8 +7,8 @@ class SessionFilterFilters {
             before = {
                 if (!session.user ) {
                     if(!(controllerName.equals('login') || controllerName.equals('assets'))){
-                        render(view:"/login")
-                        return false
+//                        render(view:"/login")
+                        return true
                     }
                 }
                 return true
