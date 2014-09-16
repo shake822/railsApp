@@ -41,7 +41,7 @@ class ApkController {
         
         def f = request.getFile('apkFile')
         println f.getOriginalFilename()
-        f.transferTo(new File("c:\\",f.getOriginalFilename()))c
+        f.transferTo(new File("/home/zhaoqunqi",f.getOriginalFilename()))
         getFileContent(apkInstance)
         if (apkInstance.hasErrors()) {
             respond apkInstance.errors, view:'create'
