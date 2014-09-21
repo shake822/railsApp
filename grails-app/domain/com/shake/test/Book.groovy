@@ -4,7 +4,7 @@ import groovy.transform.ToString
 
 @ToString
 class Book {
-    String bookName
-    
-    static belongsTo = [author:Author]
+	String bookName
+	static belongsTo = Author 
+	static hasMany = [authors:Author]
 }
