@@ -6,4 +6,5 @@ class Flight {
 	static belongsTo = [airport: Airport]
 	static constraints = {
 	}
+	static fetchMode = [destination: 'eager']
 }

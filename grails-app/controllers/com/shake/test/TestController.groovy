@@ -158,6 +158,46 @@ class TestController {
 			def airport = Airport.findByName("宝安国际机场")
 			airport.name="变变变"
 			airport.save(flush:true)
+		}else  if("hqlquery".equals(params.op)){
+			//.executeQuery(String query)
+			//executeQuery(String query, List positionalParams)
+			//executeQuery(String query, Map namedParams)
+			def flights = Flight.executeQuery("select a.id,a.number,a.destination.city,a.destination.country,a.airport.name,a.airport.id from Flight a")
+			flights.each { flight -> println "$flight" }
+		}else  if("query1".equals(params.op)){
+			Airport airport = Airport.get(1)
+			airport.flights.each { flight ->
+				println flight.destination.city
+			}
+		}else  if("find1".equals(params.op)){
+			def flights = Flight.find("from Flight")
+			flights.lock()
+			println flights
+			flights = Flight.findAll("from Flight")
+			println flights
+			flights = Flight.findOrCreateByNumber("生产中的")
+			println flights
+			 //flights = Flight.findOrSaveByNumber("生产中2的") 要保存到数据库中
+			flights.validate()
+			if (flights.hasErrors()) {
+				flights.errors.each {
+					println it
+				}
+			}
+			println flights
+		}else  if("first".equals(params.op)){
+			def flights = Flight.first()
+			println flights
+			flights = Flight.first(sort:"destination.id")
+		}else  if("hqlupdate".equals(params.op)){
+			//.executeQuery(String query)
+			//executeQuery(String query, List positionalParams)
+			//executeQuery(String query, Map namedParams)
+			println Flight.exists(1)
+			println Flight.exists(13)
+			def flights = Flight.executeUpdate("update Flight a set a.number = ?,a.destination.id =2 where a.id= ?",["我是一号", 1l])
+			println  "$flights 条记录遭受修改"
+			//			flights.each { flight -> println "$flight" }
 		}else  if("query".equals(params.op)){
 			def persons = Person.findByName("12")
 			println persons
@@ -180,9 +220,7 @@ class TestController {
 			println "Nothing"
 		}
 	}
-	def showFamily(){
-		def mans = Man.list
-		flash.mans = mans
-		render(view:"/test/man")
+	def showOther(){
+		application.allClasses.each { println it.name }
 	}
 }

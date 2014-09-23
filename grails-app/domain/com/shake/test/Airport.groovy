@@ -5,7 +5,8 @@ class Airport {
 	static hasMany = [flights:Flight]
 	static constraints = {
 	}
-	static mapping = {
-		flights  lazy: false , batchSize: 2
-	}
+	static fetchMode = [flights: 'eager']
+//	static mapping = {
+//		flights  lazy: false , batchSize: 2
+//	}
 }
