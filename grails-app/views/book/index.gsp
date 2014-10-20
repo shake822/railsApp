@@ -24,8 +24,6 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="book.author.label" default="Author" /></th>
-					
 						<g:sortableColumn property="bookName" title="${message(code: 'book.bookName.label', default: 'Book Name')}" />
 					
 					</tr>
@@ -34,9 +32,8 @@
 				<g:each in="${bookInstanceList}" status="i" var="bookInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "author")}</g:link></td>
 					
-						<td>${fieldValue(bean: bookInstance, field: "bookName")}</td>
+						<td><g:link action="show" id="${bookInstance.id}">${fieldValue(bean: bookInstance, field: "bookName")}</g:link></td>
 					
 					</tr>
 				</g:each>

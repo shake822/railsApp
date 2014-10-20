@@ -24,19 +24,19 @@
 			<ol class="property-list book">
 			
 			
-				<g:if test="${bookInstance?.bookName}">
+				<g:if test="${book?.bookName}">
 				<li class="fieldcontain">
 					<span id="bookName-label" class="property-label"><g:message code="book.bookName.label" default="Book Name" /></span>
 					
-						<span class="property-value" aria-labelledby="bookName-label"><g:fieldValue bean="${bookInstance}" field="bookName"/></span>
+						<span class="property-value" aria-labelledby="bookName-label"><g:fieldValue bean="${book}" field="bookName"/></span>
 					
 				</li>
 				</g:if>
 			
 			</ol>
-			<g:form url="[resource:bookInstance, action:'delete']" method="DELETE">
+			<g:form url="[resource:book, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${bookInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit" action="edit" resource="${book}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
